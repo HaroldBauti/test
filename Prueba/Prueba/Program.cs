@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Prueba.Client.Pages;
 using Prueba.Components;
-using SIGEDLL;
+using IOC;
 
 var builder = WebApplication.CreateBuilder(args);
 

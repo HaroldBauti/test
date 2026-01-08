@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BLL.Interfaces;
-using DTO_s; // o el namespace real de UsuarioDto
+using DTOs; // o el namespace real de UsuarioDto
 
 namespace Prueba.Controllers
 {
