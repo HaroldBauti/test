@@ -1,0 +1,47 @@
+﻿@page "/prueba-test"
+
+@inject HttpClient Http
+<h3>Prueba de Usuario</h3>
+
+<button @onclick="CrearUsuario">Crear Usuario</button>
+<button @onclick="ListarUsuarios">Listar Usuarios</button>
+
+<ul>
+    @if (usuarios != null)
+    {
+        @foreach (var u in usuarios)
+        {
+            <li>@u.Id - @u.Nombre</li>
+        }
+    }
+</ul>
+
+@code {
+    private List<UsuarioDto> usuarios;
+  
+
+    private async Task CrearUsuario()
+    {
+        var usuario = new UsuarioDto
+        {
+            Id = 1,
+            Nombre = "Juan"
+        };
+
+        var response = await Http.PostAsJsonAsync("api/prueba/crear", usuario);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Usuario creado");
+        }
+        else
+        {
+            Console.WriteLine("Error al crear usuario");
+        }
+    }
+
+    private async Task ListarUsuarios()
+    {
+        usuarios = await Http.GetFromJsonAsync<List<UsuarioDto>>("api/prueba/listar");
+    }
+}
